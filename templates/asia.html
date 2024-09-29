@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h1">Asia</h1>
+<div class="div3">
+    <div class="div2">
+        <p class="p">
+            Asias wine industry is still emerging but is rapidly gaining attention.
+        </p>
+        <p class="p">China: </p>
+        <p class="p">
+            China has become a major wine producer, particularly for red wines,
+            with Cabernet Sauvignon being the dominant grape. The Ningxia region is considered the
+            "Bordeaux of China" and is producing award-winning wines.
+        </p>
+        <p class="p">Japan:</p>
+        <p class="p">
+            Best known for Koshu, a delicate white wine made from the Koshu grape,
+            which is well-suited to Japan's humid climate. The Yamanashi Prefecture is Japans main wine-producing region.
+        </p>
+        <p class="p">India:</p>
+        <p class="p">
+            Wine production in India is concentrated in the Nashik Valley, often called "Indias Napa Valley."
+            Sula Vineyards is one of the leading producers, focusing on Shiraz and Chenin Blanc.
+        </p>
+        <p class="p">Turkey:</p>
+        <p class="p">
+            With ancient winemaking traditions dating back thousands of years,
+            Turkey produces unique indigenous varieties like Kalecik Karas and Öküzgözü.
+        </p>
+    </div>
+    <div class="div2">
+        <img src="{{ url_for('static', filename='images/asvineyard.png') }}" alt="vineyard">
+    </div>
+    <div class="div1">
+        <p>
+            Here we have a table of some of the most famous wines from Asia.
+            By clicking Add to Wishlist, you can create your own wishlist of wines that you would like to try.
+            You can view your wishlist on the profile page.
+        </p>
+    </div>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Country of Origin</th>
+            <th scope="col">Grapes Type</th>
+            <th scope="col">Average Price</th>
+          </tr>
+    </thead>
+    <tbody>
+        {% for id, wine in aswinelist.items() %}
+        <tr>
+            <td>{{ wine.name }}</td>
+            <td>{{ wine.origin }}</td>
+            <td>{{ wine.grapes_type }}</td>
+            <td>{{ wine.average_price }}</td>
+            <td>
+                {% if id in wishlist %}
+                    <button type="button"  class="added-btn" id="wishlist-btn-{{ id }}" disabled>Added to Wishlist</button>
+                {% else %}
+                    <button type="button" class="add-btn" id="wishlist-btn-{{ id }}" onclick="addToWishlist('{{ id }}')">Add to Wishlist</button>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

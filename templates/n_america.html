@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h1">North America</h1>
+<div class="div3">
+    <div class="div2">
+        <p class="p">
+            North America is dominated by the United States, with Canada and Mexico also making waves.
+        </p>
+        <p class="p">United States:</p>
+        <p class="p">California:</p>
+        <p class="p">
+            The state is home to iconic regions like Napa Valley
+            (famous for Cabernet Sauvignon and Chardonnay) and Sonoma (known for Pinot Noir and Zinfandel).
+            Paso Robles, Santa Barbara, and Mendocino are also rising regions.
+        </p>
+        <p class="p">Oregon:</p>
+        <p class="p">Known for Pinot Noir, especially from the Willamette Valley.</p>
+        <p class="p">Washington State:</p>
+        <p class="p">
+            Recognized for bold red varietals, particularly Syrah and Cabernet Sauvignon,
+            from regions like Walla Walla and Columbia Valley.
+        </p>
+        <p class="p">Canada:</p>
+        <p class="p">
+            Ontarios Niagara Peninsula and British Columbias Okanagan Valley are leading regions, known for Ice Wine
+            (made from frozen grapes). Ontario is famous for Riesling and Vidal Blanc.
+        </p>
+        <p class="p">Mexico:</p>
+        <p class="p">
+             The Valle de Guadalupe in Baja California is the heart of Mexican winemaking,
+            with bold reds like Nebbiolo, Cabernet Sauvignon, and Syrah gaining recognition.
+        </p>
+    </div>
+    <div class="div2">
+        <img src="{{ url_for('static', filename='images/navineyard.png') }}" alt="vineyard">
+    </div>
+    <div class="div1">
+        <p>
+            Here we have a table of some of the most famous wines from North America.
+            By clicking Add to Wishlist, you can create your own wishlist of wines that you would like to try.
+            You can view your wishlist on the profile page.
+        </p>
+    </div>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Country of Origin</th>
+            <th scope="col">Grapes Type</th>
+            <th scope="col">Average Price</th>
+          </tr>
+    </thead>
+    <tbody>
+        {% for id, wine in nawinelist.items() %}
+            <tr>
+                <td>{{ wine.name }}</td>
+                <td>{{ wine.origin }}</td>
+                <td>{{ wine.grapes_type }}</td>
+                <td>{{ wine.average_price }}</td>
+                <td>
+                    {% if id in wishlist %}
+                        <button type="button"  class="added-btn" id="wishlist-btn-{{ id }}" disabled>Added to Wishlist</button>
+                    {% else %}
+                        <button type="button" class="add-btn" id="wishlist-btn-{{ id }}" onclick="addToWishlist('{{ id }}')">Add to Wishlist</button>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

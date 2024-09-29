@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <header>
+            <img class="logoimg" src="{{ url_for('static', filename='images/logo.png') }}" alt="logo">
+            <div class="header2">
+                <h1><a href="{{ url_for('home') }}">Vino</a></h1>
+            </div>
+            <div class="header1">
+                <div class="header11">
+                    <p class="h1">Everything you need to know about wine !!!</p>
+                </div>
+                <div class="header12">
+                    <!--this jinja template is link for profile or login depending on session status-->
+                    {% if session.get('logged_in')%}
+                    <a href="{{ url_for('profile') }}"><img class="profileimg" src="{{ url_for('static', filename='images/profileimg.png') }}" alt="profile"></a>
+                    {% else %}
+                    <a href="{{ url_for('login') }}"><img class="profileimg" src="{{ url_for('static', filename='images/profileimg.png') }}" alt="profile"></a>
+                    {% endif %}
+                    <div>
+                        <!--this displays your name if loggged in-->
+                        {% if session.get('logged_in') %}
+                        <p>{{ session.get('username') }}</p>
+                        {% else %}
+                        <a href="{{ url_for('login') }}"><p>Log In</p></a>
+                        {% endif %}
+                        <a href="{{ url_for('logout') }}"><p>Log Out</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="header3">
+                <nav>
+                    <a href="{{ url_for('europe') }}">Europe</a>
+                    <a href="{{ url_for('asia') }}">Asia</a>
+                    <a href="{{ url_for('africa') }}">Africa</a>
+                    <a href="{{ url_for('n_america') }}">North America</a>
+                    <a href="{{ url_for('s_america') }}">South America</a>
+                    <a href="{{ url_for('australia') }}">Australia</a>
+                </nav>
+            </div>
+        </header>
+        <div class="slideshow-container">
+            <div id="slideshow1" class="slideshow"></div>
+            <div id="slideshow2" class="slideshow"></div>
+            <div id="slideshow3" class="slideshow"></div>
+        </div>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+        <footer>
+            <div class="div6">
+                <div class="p">
+                    <p>For more information abotut wine vist:</p>
+                    <a href="https://www.wine-searcher.com">Wine Searcher</a>
+                </div>
+                <div class="p">
+                    <p>Contact:</p>
+                    <a href="mailto:ledenko96@gmail.com">Email</a>
+                </div>
+            </div>
+            <div class="div2">
+                <p>&copy; 2024 Vino. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </body>
+</html>

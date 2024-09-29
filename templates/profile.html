@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="h1">Welcome  {{ username }}!</h2>
+<p class="div2">Welcome to your profile {{ username }}. Here you can find your wine wishlist
+    from some of the most famous wines around the world !!!</p>
+{% if wishlist %}
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Country</th>
+            <th scope="col">Grapes</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for id, wine in wishlist.items() %}
+        <tr>
+            <td>{{ wine.name }}</td>
+            <td>{{ wine.origin }}</td>
+            <td>{{ wine.grapes_type }}</td>
+            <td>{{ wine.average_price }}</td>
+            <td>
+                <form action="{{ url_for('delete_my_wish_list', id=id) }}" method="POST">
+                    <button class="delete-btn" type="submit">Delete</button>
+                  </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="div2">Your wishlist is empty.</p>
+{% endif %}
+{% endblock %}

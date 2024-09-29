@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h1">Australia and Oceania</h1>
+<div class="div3">
+    <div class="div2">
+        <p class="p">
+            Australia and New Zealand have firmly established themselves as major players in the global wine industry,
+            with distinct styles and varietals.
+        </p>
+        <p class="p">Australia:</p>
+        <p class="p">
+            Barossa Valley in South Australia is famous for rich, full-bodied Shiraz (Syrah).
+            Other notable regions include Hunter Valley (known for Semillon) and Margaret River
+            (known for Cabernet Sauvignon and Chardonnay).
+            Australia also excels in Riesling from the Clare Valley and Eden Valley.
+        </p>
+        <p class="p">Tasmania:</p>
+        <p class="p">
+            Tasmania is emerging as a producer of cool-climate wines, particularly Chardonnay,
+            Pinot Noir, and sparkling wines.
+        </p>
+        <p class="p">New Zealand: </p>
+        <p class="p">
+            The country has made a global name for Sauvignon Blanc from the Marlborough region,
+            with its distinctive tropical and citrus flavors. Central Otago is recognized for world-class Pinot Noir.
+        </p>
+    </div>
+    <div class="div2">
+        <img src="{{ url_for('static', filename='images/auvineyard.png') }}" alt="vineyard">
+    </div>
+    <div class="div1">
+        <p>
+            Here we have a table of some of the most famous wines from Australia and Oceania.
+            By clicking Add to Wishlist, you can create your own wishlist of wines that you would like to try.
+            You can view your wishlist on the profile page.
+        </p>
+    </div>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Country of Origin</th>
+            <th scope="col">Grapes Type</th>
+            <th scope="col">Average Price</th>
+          </tr>
+    </thead>
+    <tbody>
+        {% for id, wine in auwinelist.items() %}
+            <tr>
+                <td>{{ wine.name }}</td>
+                <td>{{ wine.origin }}</td>
+                <td>{{ wine.grapes_type }}</td>
+                <td>{{ wine.average_price }}</td>
+                <td>
+                    {% if id in wishlist %}
+                        <button type="button"  class="added-btn" id="wishlist-btn-{{ id }}" disabled>Added to Wishlist</button>
+                    {% else %}
+                        <button type="button" class="add-btn" id="wishlist-btn-{{ id }}" onclick="addToWishlist('{{ id }}')">Add to Wishlist</button>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

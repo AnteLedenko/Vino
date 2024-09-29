@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h1">Europe</h1>
+<div class="div3">
+    <div class="div2">
+        <p class="p">
+            Europe is the most established wine-producing region in the world,
+            with centuries-old traditions that have shaped the norms for winemaking around the world.
+        </p>
+        <p class="p">France:</p>
+        <p class="p">
+            Known for regions like Bordeaux, Burgundy, and Champagne.
+            Bordeaux is famous for Cabernet Sauvignon, Merlot, and Cabernet Franc,
+            while Burgundy is home to Pinot Noir and Chardonnay. Champagne is known for
+            its world-renowned sparkling wines.
+        </p>
+        <p class="p">Italy:</p>
+        <p class="p">
+            Italy has over 20 wine regions. Tuscany is famous for Chianti (Sangiovese),
+            while Piedmont is known for Barolo and Barbaresco (Nebbiolo). The Veneto region produces Prosecco and Amarone.
+        </p>
+        <p class="p">Spain:</p>
+        <p class="p">
+            Known for Rioja (Tempranillo), Ribera del Duero, and Sherry from Jerez.
+            The Priorat region is also notable for its bold red wines.
+        </p>
+        <p class="p">Germany:</p>
+        <p class="p">
+            Renowned for Riesling, especially in the Mosel and Rheingau regions.
+            German wines are known for their balance of acidity and sweetness.
+        </p>
+        <p class="p">Portugal:</p>
+        <p class="p">
+            Douro Valley produces Port wine (fortified wine), and Vinho Verde is a light,
+            refreshing white wine. The Alentejo region is known for bold red wines.
+        </p>
+    </div>
+    <div class="div2">
+        <img src="{{ url_for('static', filename='images/euvineyard.png') }}" alt="vineyard">
+    </div>
+    <div class="div1">
+        <p>
+            Here we have a table of some of the most famous wines from Europe.
+            By clicking Add to Wishlist, you can create your own wishlist of wines that you would like to try.
+            You can view your wishlist on the profile page.
+        </p>
+    </div>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Country of Origin</th>
+            <th scope="col">Grapes Type</th>
+            <th scope="col">Average Price</th>
+          </tr>
+    </thead>
+    <tbody>
+        <!--this displays tabe from datastore-->
+        {% for id, wine in euwinelist.items() %}
+            <tr>
+                <td>{{ wine.name }}</td>
+                <td>{{ wine.origin }}</td>
+                <td>{{ wine.grapes_type }}</td>
+                <td>{{ wine.average_price }}</td>
+                <td>
+                    <!--this triggers the fetch-->
+                    {% if id in wishlist %}
+                        <button type="button" class="added-btn" id="wishlist-btn-{{ id }}" disabled>Added to Wishlist</button>
+                    {% else %}
+                        <button type="button" class="add-btn" id="wishlist-btn-{{ id }}" onclick="addToWishlist('{{ id }}')">Add to Wishlist</button>
+                    {% endif %}
+                </td>
+            </tr><!--same process on other continent pages-->
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

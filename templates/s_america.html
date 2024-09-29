@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h1">South America</h1>
+<div class="div3">
+    <div class="div2">
+        <p class="p">
+            South America is home to a rapidly growing wine industry, with Argentina and Chile leading the way.
+        </p>
+        <p class="p">Argentina:</p>
+        <p class="p">
+            The Mendoza region is the global capital for Malbec, which thrives in the high-altitude vineyards of the Andes.
+            Argentina also produces Torrontés (a fragrant white wine) and Bonarda.
+        </p>
+        <p class="p">Chile:</p>
+        <p class="p">
+            Known for Cabernet Sauvignon, Carmenère, and Sauvignon Blanc. The Maipo Valley, Colchagua Valley,
+            and Casablanca Valley are among the top regions. Carmenère, originally from France,
+            has found a new home in Chile.
+        </p>
+        <p class="p">Uruguay:</p>
+        <p class="p">
+            Known for Tannat, a robust red wine that has become the country's flagship grape.
+            The Canelones region is key for wine production.
+        </p>
+        <p class="p">Brazil:</p>
+        <p class="p">
+            Serra Gaúcha is Brazils main wine region, with a focus on sparkling wines made from Chardonnay and Pinot Noir.
+            Brazil is becoming known for its vibrant wine tourism.
+        </p>
+    </div>
+    <div class="div2">
+        <img src="{{ url_for('static', filename='images/savineyard.png') }}" alt="vineyard">
+    </div>
+    <div class="div1">
+        <p>
+            Here we have a table of some of the most famous wines from South America.
+            By clicking Add to Wishlist, you can create your own wishlist of wines that you would like to try.
+            You can view your wishlist on the profile page.
+        </p>
+    </div>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Country of Origin</th>
+            <th scope="col">Grapes Type</th>
+            <th scope="col">Average Price</th>
+          </tr>
+    </thead>
+    <tbody>
+        {% for id, wine in sawinelist.items() %}
+            <tr>
+                <td>{{ wine.name }}</td>
+                <td>{{ wine.origin }}</td>
+                <td>{{ wine.grapes_type }}</td>
+                <td>{{ wine.average_price }}</td>
+                <td>
+                    {% if id in wishlist %}
+                        <button type="button"  class="added-btn" id="wishlist-btn-{{ id }}" disabled>Added to Wishlist</button>
+                    {% else %}
+                        <button type="button" class="add-btn" id="wishlist-btn-{{ id }}" onclick="addToWishlist('{{ id }}')">Add to Wishlist</button>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h1">What is Wine?</h1>
+<div class="div1">
+    <p>
+        Typically made by fermenting grapes, wine, commonly referred to as "vino,"
+        is a popular alcoholic beverage consumed worldwide.
+    </p>
+    <p>
+        As one of the oldest alcoholic beverages, wine has a lengthy and distinguished history.
+        It is also believed that many of the most notable historical figures have preferred wine
+        as their beverage of choice.
+    </p>
+    <p>
+        There are numerous types of wine, and categorizing them can be complex due to variations in grape varieties,
+        production methods, and regional classifications.But we will just cover the primary category,
+        which we have divided into seven sorts of wine.
+    </p>
+</div>
+<h2>Main Categories</h2>
+<div class="div22">
+    <div class="div5">
+        <ul>
+            <li>Red Wines</li>
+            <li>White Wines</li>
+            <li>Rose Wines</li>
+            <li>Orange Wines</li>
+            <li>Sparkling Wines</li>
+            <li>Dessert Wines</li>
+            <li>Fortified Wines</li>
+        </ul>
+    </div>
+    <div class="div2">
+        <img src="{{ url_for('static', filename='images/bottles.png') }}" alt="bottles">
+    </div>
+</div>
+<div class="div11">
+    <div class="div2">
+        <h3>Red Wines</h3>
+        <p>
+            The flavorful favorite red wine actually ferments with the grape skins to provide its deep color and flavor.
+        </p>
+        <p>
+            The majority of purple or red grapes actually produce greenish-white wine; the pigments called anthocyanins,
+            which are present in the grape skin, are what give wine its beloved red color.
+        </p>
+        <p>
+            A bitter, slightly dry aftertaste that is often referred to chocolaty or occasionally oaky is
+            left in your tongue after enjoying a sip of a really superb red wine.
+        </p>
+        <p>
+            Red wine grape varieties include Pinot noir, Cabernet Sauvignon, Malbec, Tempranillo, Merlot, Bobal, Cinsaut
+            and Zinfandel.
+        </p>
+    </div>
+    <div class="div2">
+        <h3>White Wines</h3>
+        <p>
+            It can be made with both black and white grapes, but just like red wine,
+            the final product's flavor profile is mostly determined by the type of grape used and the fermenting method
+            employed.
+        </p>
+        <p>
+            White wine is produced by quickly pressing the grapes and extracting the liquid from the skins.
+            As a result, the finished product has low tannins and a crisp, fresh flavor from its acidity.
+        </p>
+        <p>
+            White wine grape varieties include Chardonnay, Sauvignon blanc, Muscat, Müller-Thurgau, Chenin blanc,
+            Trebbiano, Viognier,
+            Sauvignon gris, Pinot Meunier, Grenache Gris and more.
+        </p>
+    </div>
+    <div class="div2">
+        <h3>Rose Wines</h3>
+        <p>
+            The most distinctive feature of rosé wine is its distinct blush-pink color, which makes it somewhat
+            sweeter than both red and white wines.
+            The color of rosé wine is mostly caused by black grape skins, but not enough to make it a red wine.
+        </p>
+        <p>
+            Rosé wine can be made from any type of black grape, and the final flavor of the wine will
+            naturally depend on the grape variety and growing region.
+        </p>
+        <p>
+            The most well-known rose wines are Provence (French), Rosado (Spanish), and Rosato (Italian).
+        </p>
+    </div>
+    <div class="div2">
+        <h3>Orange Wines</h3>
+        <p>
+            Orange wine, sometimes known as "Amber wine," comes in a variety of colors, from dark straw to dark gold,
+            making its name "orange" a little misleading.
+        </p>
+        <p>
+            While produced in a way similar to that of both red and rosé wine... These wines are made from white grapes,
+            but before pressing, the skins are allowed to soak.
+        </p>
+        <p>
+            Due to this procedure and the extended soaking of the skins,
+            orange wine has a distinctly tannic flavor and is typically served dry.
+        </p>
+    </div>
+    <div class="div2">
+        <h3>Sparkling Wines</h3>
+        <p>
+            Sparkling wines frequently have their origins in their names. In order to produce CO2 bubbles that make the
+            wine effervescent and give it a light, sparkling quality, sparkling wine is fermented in a bottle.
+        </p>
+        <p>
+            Sparkling wines are sweetened and flavored, usually using white wines, though sparkling rosé and occasionally
+            red wines are also available.
+        </p>
+    </div>
+    <div class="div2">
+        <h3>Fortified Wines</h3>
+        <p>
+            A wine known as fortified wine is created by adding distilled alcohol, most commonly brandy, to wine.
+        </p>
+        <p>
+            These wines are typically served toward the end of a meal and are typically fairly high in
+            sugar and alcohol content.
+        </p>
+        <p>
+            Among the well-known fortified wines are Port, Commandaria, Sherry, Madeira, Marsala,
+            and the aromatized wine Vermouth.
+        </p>
+    </div>
+    <div class="div2">
+        <h3>Dessert Wines</h3>
+        <p>
+            Due to the fact that they are both on the sweeter side, dessert wines and fortified wines are often mixed.
+        </p>
+        <p>
+            Many grape varietals, such as Muscat, Ortega, Huxelrebe, etc., are used to make dessert wine.
+            These grape varietals are ideal for use in dessert wines since they naturally produce a lot more sugar
+            than many others.
+        </p>
+        <p>
+            However, the process of manufacturing dessert wine also involves the manual addition of more alcohol and sugar.
+            Ice wine, noble rot, and raisin wine are a few of the well-liked dessert wines.
+        </p>
+    </div>
+    <div class="div2">
+        <img src="{{ url_for('static', filename='images/cellar.png') }}" alt="cellar">
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h1">Africa</h1>
+<div class="div3">
+    <div class="div2">
+        <p class="p">
+            Africa's wine industry is centered on South Africa, but other regions are slowly reviving their winemaking traditions.
+        </p>
+        <p class="p">South Africa:</p>
+        <p class="p">
+            The Western Cape region, including Stellenbosch, Paarl, and Franschhoek, is the heart of the wine industry.
+            South Africa is known for Pinotage (a cross between Pinot Noir and Cinsault) and Chenin Blanc, called Steen locally.
+        </p>
+        <p class="p">Morocco:</p>
+        <p class="p">
+            Wine has been produced here for centuries, but its making a comeback with varieties like Syrah,
+            Cabernet Sauvignon, and Carignan. The Meknes region is particularly important for wine production.
+        </p>
+        <p class="p">Algeria:</p>
+        <p class="p">
+            Once the fourth-largest wine producer in the world (during French colonization),
+            Algeria is trying to revive its winemaking with varietals like Cinsault, Grenache, and Carignan.
+        </p>
+    </div>
+    <div class="div2">
+        <img src="{{ url_for('static', filename='images/afvineyard.png') }}" alt="vineyard">
+    </div>
+    <div class="div1">
+        <p>
+            Here we have a table of some of the most famous wines from Africa.
+            By clicking Add to Wishlist, you can create your own wishlist of wines that you would like to try.
+            You can view your wishlist on the profile page.
+        </p>
+    </div>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Country of Origin</th>
+            <th scope="col">Grapes Type</th>
+            <th scope="col">Average Price</th>
+          </tr>
+    </thead>
+    <tbody>
+        {% for id, wine in afwinelist.items() %}
+            <tr>
+                <td>{{ wine.name }}</td>
+                <td>{{ wine.origin }}</td>
+                <td>{{ wine.grapes_type }}</td>
+                <td>{{ wine.average_price }}</td>
+                <td>
+                    {% if id in wishlist %}
+                        <button type="button"  class="added-btn" id="wishlist-btn-{{ id }}" disabled>Added to Wishlist</button>
+                    {% else %}
+                        <button type="button"  class="add-btn"id="wishlist-btn-{{ id }}" onclick="addToWishlist('{{ id }}')">Add to Wishlist</button>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
